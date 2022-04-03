@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema({
   discription: String,
   caregory: String,
 });
-const product = mongoose.model("product", productSchema);
+const Product = mongoose.model("product", productSchema);
 
 exports.getAllProducts = () => {
   // connect to db
@@ -18,7 +18,21 @@ exports.getAllProducts = () => {
     mongoose
       .connect(DB_URL)
       .then(() => {
-        return product.find({});
+        return Product.find({});
+      })
+      .then((products) => {
+        mongoose.disconnect();
+        resolve(products);
+      })
+      .catch((err) => reject(err));
+  });
+};
+exports.getProductsByCategory = (category) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URL)
+      .then(() => {
+        return Product.find({ category: category });
       })
       .then((products) => {
         mongoose.disconnect();

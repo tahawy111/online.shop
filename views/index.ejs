@@ -1,2 +1,44 @@
-<%- include('./parts/header.ejs') %> <%- include('./parts/navbar.ejs') %> <%-
-include('./parts/footer.ejs') %>
+<%- include('./parts/header.ejs') %> <%# Navbar %> <%-
+include('./parts/navbar.ejs') %>
+<div class="container">
+  <form action="/" method="GET">
+    <select name="category" class="form-control">
+      <option value="all">All</option>
+      <option value="clothes">Clothes</option>
+      <option value="phones">Phones</option>
+      <option value="computers">Computers</option>
+    </select>
+    <input type="submit" class="btn btn-outline-primary mt-3" value="Filter" />
+  </form>
+
+  <%# Products %>
+  <div class="row">
+    <% for(let product of products){ %>
+    <div class="col col-12 col-md-6 col-lg-4 col-xl-3">
+      <div class="card" style="width: 18rem">
+        <img src="<%= product.image%>" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title text-primary text-decoration-none fs-3 fw-bol">
+            <%= product.name %>
+          </h5>
+          <p class="fs-5">Price: $<%= product.price %></p>
+          <form action="/cart" class="my-3" method="post">
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Amount"
+              name="amount"
+            />
+            <input
+              type="submit"
+              class="btn btn-success mt-3"
+              value="Add To Cart"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+<%- include('./parts/footer.ejs') %>
