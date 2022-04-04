@@ -1,8 +1,10 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+
 const homeRouter = require("./routes/home.route");
 const productRouter = require("./routes/product.route");
+const authRouter = require("./routes/auth.route");
 
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "images")));
