@@ -6,7 +6,7 @@ router.get("/signup", authController.getSignup);
 
 router.post(
   "/signup",
-  bodyParser.urlencoded({ extends: true }),
+  bodyParser.urlencoded({ extended: true }),
   authController.postSignup
 );
 

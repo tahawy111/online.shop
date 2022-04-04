@@ -3,6 +3,13 @@ include('./parts/navbar.ejs') %>
 
 <div class="container text-center">
   <h3>Create Account</h3>
+  <form action="/signup" class="form-control" method="POST">
+    <input type="text" name="username" placeholder="Username" />
+    <input type="email" name="email" placeholder="E-Mail" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="password" name="confirmPassword" placeholder="Password" />
+    <input type="submit" value="Create Account" class="btn btn-primary" />
+  </form>
 </div>
 
 <%- include('./parts/footer.ejs') %>
