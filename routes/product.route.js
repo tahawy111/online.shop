@@ -1,5 +1,5 @@
-// const router = require("express").Router();
+const router = require("express").Router();
 
-// router.get("/product/:id");
+router.get("/product/:id");
 
-// module.exports = router;
+module.exports = router;
