@@ -1,7 +1,7 @@
-// exports.getProduct = (req, res, next) => {
-//   // get id
-//   // Get Product
-//   // render
-
-//   let id = req.params.id;
-// };
+const productsModel = require("../models/products.model");
+exports.getProduct = (req, res, next) => {
+  let id = req.params.id;
+  productsModel.getProductById(id).then((product) => {
+    res.render("product", { product: product });
+  });
+};
