@@ -11,7 +11,9 @@ include('./parts/navbar.ejs') %>
     <input type="submit" class="btn btn-outline-primary mt-3" value="Filter" />
   </form>
 
-  <%# Products %>
+  <% if(products.length === 0){ %>
+  <div class="alert alert-danger">There is no Products</div>
+  <% } else{ %> <%# Products %>
   <div class="row">
     <% for(let product of products){ %>
     <div class="col col-12 col-md-6 col-lg-4 col-xl-3">
@@ -42,5 +44,6 @@ include('./parts/navbar.ejs') %>
     </div>
     <% } %>
   </div>
+  <% } %>
 </div>
 <%- include('./parts/footer.ejs') %>
