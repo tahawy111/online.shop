@@ -38,7 +38,10 @@ exports.getProductsByCategory = (category) => {
         mongoose.disconnect();
         resolve(products);
       })
-      .catch((err) => reject(err));
+      .catch((err) => {
+        mongoose.disconnect();
+        return reject(err);
+      });
   });
 };
 exports.getProductById = (id) => {
@@ -52,7 +55,10 @@ exports.getProductById = (id) => {
         mongoose.disconnect();
         resolve(products);
       })
-      .catch((err) => reject(err));
+      .catch((err) => {
+        mongoose.disconnect();
+        return reject(err);
+      });
   });
 };
 
@@ -67,6 +73,9 @@ exports.getFirstProduct = () => {
         mongoose.disconnect();
         resolve(products);
       })
-      .catch((err) => reject(err));
+      .catch((err) => {
+        mongoose.disconnect();
+        return reject(err);
+      });
   });
 };
