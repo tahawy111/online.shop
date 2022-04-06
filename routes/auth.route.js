@@ -12,4 +12,9 @@ router.post(
 
 router.get("/login", authController.getLogin);
 
+router.post(
+  "/signin",
+  bodyParser.urlencoded({ extended: true }),
+  authController.postLogin
+);
 module.exports = router;
