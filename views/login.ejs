@@ -22,6 +22,10 @@ include('./parts/navbar.ejs') %>
       class="btn btn-primary my-2"
     />
   </form>
+  <% if(authError){ %>
+  <br />
+  <p class="alert alert-danger"><%= authError %></p>
+  <% } %>
   <p class="mt-3">
     Don't Have Account ?
     <a class="text-primary" href="/signup">Create Account</a>
