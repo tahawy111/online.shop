@@ -1,4 +1,5 @@
 const authModel = require("../models/auth.model");
+const flash = require("connect-flash");
 
 exports.getSignup = (req, res, next) => {
   res.render("signup");
@@ -16,6 +17,7 @@ exports.postSignup = (req, res, next) => {
 };
 
 exports.getLogin = (req, res, next) => {
+  console.log(req.flash("authError"));
   res.render("login");
 };
 
@@ -27,7 +29,7 @@ exports.postLogin = (req, res, next) => {
       res.redirect("/");
     })
     .catch((err) => {
-      console.log(err);
+      req.flash("authError", err);
       res.redirect("/login");
     });
 };
