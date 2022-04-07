@@ -1,10 +1,11 @@
+const validationResult = require("express-validator").validationResult;
 const authModel = require("../models/auth.model");
-
 exports.getSignup = (req, res, next) => {
   res.render("signup");
 };
 
 exports.postSignup = (req, res, next) => {
+  return console.log(validationResult(req).array());
   authModel
     .createNewUser(req.body.username, req.body.email, req.body.password)
     .then(() => {
