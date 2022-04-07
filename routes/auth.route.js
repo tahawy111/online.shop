@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const authController = require("../controllers/auth.controller");
+const check = require("express-validator");
 const bodyParser = require("body-parser");
 
 router.get("/signup", authController.getSignup);
