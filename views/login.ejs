@@ -9,6 +9,10 @@ include('./parts/navbar.ejs') %>
       name="email"
       placeholder="E-Mail"
     />
+    <% let emailError = validationErrors.find(err => err.param === 'email') %>
+    <% if(emailError){ %>
+    <p class="alert alert-danger"><%= emailError.msg %></p>
+    <% } %>
     <input
       type="password"
       class="form-control my-2"
