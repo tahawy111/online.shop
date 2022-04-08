@@ -19,6 +19,10 @@ include('./parts/navbar.ejs') %>
       name="password"
       placeholder="Password"
     />
+    <% let passwordError = validationErrors.find(err => err.param ===
+    'password') %> <% if(passwordError){ %>
+    <p class="alert alert-danger"><%= passwordError.msg %></p>
+    <% } %>
     <input
       type="submit"
       class="btn btn-primary"

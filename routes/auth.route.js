@@ -26,7 +26,12 @@ router.get("/login", authController.getLogin);
 router.post(
   "/signin",
   bodyParser.urlencoded({ extended: true }),
-  check("email").not().isEmpty().withMessage("Invalid format").isEmail(),
+  check("email")
+    .not()
+    .isEmpty()
+    .withMessage("Email is required")
+    .isEmail()
+    .withMessage("Invalid format"),
   check("password")
     .isLength({ min: 6 })
     .withMessage("Password must be at least 6 characters"),
