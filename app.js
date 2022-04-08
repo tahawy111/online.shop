@@ -21,6 +21,7 @@ app.use(
     secret: "this is my secret secret th hash express sessions...............",
     saveUninitialized: false,
     store: STORE,
+    resave: true,
   })
 );
 app.set("view engine", "ejs");
