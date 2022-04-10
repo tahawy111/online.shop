@@ -2,11 +2,12 @@ const router = require("express").Router();
 const authController = require("../controllers/auth.controller");
 const check = require("express-validator").check;
 const bodyParser = require("body-parser");
-
-router.get("/signup", authController.getSignup);
+const authGuard = require("./guards/auth.guard");
+router.get("/signup", authGuard.notAuth, authController.getSignup);
 
 router.post(
   "/signup",
+  authGuard.notAuth,
   bodyParser.urlencoded({ extended: true }),
   check("username").not().isEmpty().withMessage("Username is required"),
   check("email").not().isEmpty().withMessage("Invalid format").isEmail(),
@@ -21,10 +22,11 @@ router.post(
   authController.postSignup
 );
 
-router.get("/login", authController.getLogin);
+router.get("/login", authGuard.notAuth, authController.getLogin);
 
 router.post(
   "/signin",
+  authGuard.notAuth,
   bodyParser.urlencoded({ extended: true }),
   check("email")
     .not()
@@ -38,6 +40,6 @@ router.post(
   authController.postLogin
 );
 
-router.all("/logout", authController.logout);
+router.all("/logout", authGuard.isAuth, authController.logout);
 
 module.exports = router;
