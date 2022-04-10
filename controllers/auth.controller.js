@@ -4,6 +4,7 @@ exports.getSignup = (req, res, next) => {
   res.render("signup", {
     authError: req.flash("authError")[0],
     validationErrors: req.flash("validationErrors"),
+    isUser: false,
   });
 };
 
@@ -27,6 +28,7 @@ exports.getLogin = (req, res, next) => {
   res.render("login", {
     authError: req.flash("authError")[0],
     validationErrors: req.flash("validationErrors"),
+    isUser: false,
   });
 };
 
