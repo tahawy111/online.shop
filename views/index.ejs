@@ -11,7 +11,9 @@ include('./parts/navbar.ejs') %>
     <input type="submit" class="btn btn-outline-primary mt-3" value="Filter" />
   </form>
 
-  <% if(products.length === 0){ %>
+  <% if(validationError){ %>
+  <p class="alert alert-danger"><%= validationError.msg %></p>
+  <% } %> <% if(products.length === 0){ %>
   <div class="alert alert-danger">There is no Products</div>
   <% } else{ %> <%# Products %>
   <div class="row">

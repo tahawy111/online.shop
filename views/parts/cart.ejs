@@ -1,0 +1,36 @@
+<%- include('./parts/header.ejs') %> <%# Navbar %> <%-
+include('./parts/navbar.ejs') %>
+
+<div class="container">
+  <%if(item.length === 0){%>
+
+  <p class="alert alert-danger">There is no Items</p>
+
+  <% }else{ %>
+
+  <table>
+    <thead>
+      <td>#</td>
+      <td>Product name</td>
+      <td>Price</td>
+      <td>Amount</td>
+      <td>Total</td>
+    </thead>
+  </table>
+
+  <tbody>
+       <% for(let i = 0; i<items.length;i++){ %>
+          <td><%= i+1 %> </td>
+          <td><%= items[i].name %> </td>
+          <td><%= items[i].price %> </td>
+          <form method="post">
+               <td><input type="number" name="amount" class="form-control" value="<%= items[i].amount  %> "></td>
+               <td><%= items[i]  %> </td>
+          </form>
+          <% } %> 
+  </tbody>
+
+  <% } %>
+</div>
+
+<%- include('./parts/footer.ejs') %>

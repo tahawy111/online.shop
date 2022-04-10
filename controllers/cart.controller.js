@@ -18,7 +18,19 @@ exports.postCart = (req, res, next) => {
         console.log(err);
       });
   } else {
-    res.flash("validationErrors", validationResult(req).array());
+    req.flash("validationErrors", validationResult(req).array());
     res.redirect(req.body.redirectTo);
   }
+};
+
+exports.getCart = (req, res, next) => {
+  cartModel
+    .getItemByUser(req.session.userId)
+    .then((items) => {
+      res.render("cart", {
+        items: items,
+        isUser: true,
+      });
+    })
+    .catch((err) => console.log(err));
 };

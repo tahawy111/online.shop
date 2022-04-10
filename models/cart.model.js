@@ -30,3 +30,18 @@ exports.addNewItem = (data) => {
       });
   });
 };
+exports.getItemByUser = (userId) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URL)
+      .then(() => CartItem.find({ userId: userId }))
+      .then((items) => {
+        mongoose.disconnect();
+        resolve(items);
+      })
+      .catch((err) => {
+        mongoose.disconnect();
+        reject(err);
+      });
+  });
+};
