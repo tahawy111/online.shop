@@ -54,17 +54,7 @@ exports.login = (email, password) => {
       .then((user) => {
         if (!user) {
           mongoose.disconnect();
-          reject("There is no user matches this email");
-        } else {
-          bcrypt.compare(password, user.password).then((same) => {
-            if (!same) {
-              mongoose.disconnect();
-              reject("Password is incorrect");
-            } else {
-              mongoose.disconnect();
-              resolve(user._id);
-            }
-          });
+          resolve();
         }
       })
       .catch((err) => {
@@ -73,3 +63,20 @@ exports.login = (email, password) => {
       });
   });
 };
+// exports.username = (id) => {
+//   return new Promise((resolve, reject) => {
+//     mongoose
+//       .connect(DB_URL)
+//       .then(() => {
+//         return User.findById(id);
+//       })
+//       .then((user) => {
+//         mongoose.disconnect();
+//         resolve(user);
+//       })
+//       .catch((err) => {
+//         mongoose.disconnect();
+//         reject(err);
+//       });
+//   });
+// };

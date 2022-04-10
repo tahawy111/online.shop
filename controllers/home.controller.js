@@ -1,7 +1,7 @@
 const productsModel = require("../models/products.model");
+
 exports.getHome = (req, res, next) => {
   // get products
-
   let category = req.query.category;
   let productsPromise;
   let validCategories = ["all", "clothes", "phones", "computers"];
@@ -10,7 +10,10 @@ exports.getHome = (req, res, next) => {
   else productsPromise = productsModel.getAllProducts();
 
   productsPromise.then((products) => {
-    res.render("index", { products: products, isUser: req.session.userId });
+    res.render("index", {
+      products: products,
+      isUser: req.session.userId,
+    });
   });
 
   // render index.ejs

@@ -19,6 +19,6 @@ exports.postCart = (req, res, next) => {
       });
   } else {
     res.flash("validationErrors", validationResult(req).array());
-    res.redirect("/");
+    res.redirect(req.body.redirectTo);
   }
 };

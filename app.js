@@ -9,6 +9,7 @@ const flash = require("connect-flash");
 const homeRouter = require("./routes/home.route");
 const productRouter = require("./routes/product.route");
 const authRouter = require("./routes/auth.route");
+const cartRouter = require("./routes/cart.route");
 
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "images")));
@@ -30,6 +31,7 @@ app.set("views", "views");
 app.use("/", homeRouter);
 app.use("/", authRouter);
 app.use("/product", productRouter);
+app.use("/cart", cartRouter);
 // app.get("/", (req, res, next) => {
 //   res.render("index");
 // });
